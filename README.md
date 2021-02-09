@@ -1,1 +1,2 @@
+WEZER
 # weather-app
