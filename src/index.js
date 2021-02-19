@@ -2,16 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ErrorBoundary from "./components/errorBoundary/ErrorBoundary"
+import OwmService from "./services/OwmService"
+import OwmServiceContex from "./components/owmServiceContex/OwmServiceContex"
+import store from "./redux/store"
+import { Provider } from "react-redux"
+import { BrowserRouter as Router } from "react-router-dom"
+
+const ownService = new OwmService()
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+	<React.StrictMode>
+		<Provider store={store}>
+			<ErrorBoundary>
+				<OwmServiceContex.Provider value={ownService}>
+					<Router>
+						<App />
+					</Router>
+				</OwmServiceContex.Provider>
+			</ErrorBoundary>
+		</Provider>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+	</React.StrictMode>,
+	document.getElementById('root')
+);

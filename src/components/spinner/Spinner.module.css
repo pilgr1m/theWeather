@@ -1,0 +1,22 @@
+/* this code was pulled from
+https://www.w3schools.com/howto/howto_css_loader.asp */
+.spinner {
+    border: 16px solid  rgb(41, 38, 38);
+    border-top: 16px solid #423c3c;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 5s linear infinite;
+    margin: 10px auto;
+}
+.spinner span{
+    margin-left: -10px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* */

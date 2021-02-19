@@ -1,0 +1,16 @@
+  .appFooter {
+    padding-top: 20px;
+    /* position: fixed; */
+    bottom: 0;
+    padding: 20px;
+    font-size: small;
+    text-align: center;
+    /* background-color: rgba(250, 246, 0, 0.3); */
+}
+
+.footerLink {
+    color: #61dafb;
+    text-decoration: none;
+}
+
+  

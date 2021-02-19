@@ -1,0 +1,10 @@
+.Wrapper {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6em;
+}
+
+.List {
+    list-style: none;
+}

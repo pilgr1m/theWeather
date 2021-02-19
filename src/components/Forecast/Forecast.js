@@ -1,32 +1,55 @@
 import React, { useState } from 'react'
+import OwmService from "../../services/OwmService"
+import { formattedDate } from "../helpers/Helpers"
+import style from "./Forecast.module.css"
+import DaysList from '../daysList/DaysList'
 
 
 const Forecast = () => {
+    // const _API_KEY = "30e6b4f237af660a7c482fbf7ecb5c62"
+    const owmService = new OwmService()
 
-    let [responseObj, setResponseObj] = useState({});
+    let [responseObj, setResponseObj] = useState({})
+    let [error, setError] = useState(false);
+    let [loading, setLoading] = useState(false);
 
     function getForecast() {
-        const API_KEY = "30e6b4f237af660a7c482fbf7ecb5c62"
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kyiv,ua&appid=${API_KEY}`)
+        setError(false)
+        setResponseObj({})
+        setLoading(true)
+
+        const API_KEY = process.env.REACT_APP_API_KEY
+
+        owmService.getForecastSevenDays(API_KEY)
             .then(response => {
-                console.log("1th then:", response)
-                return response.json()
-            })
-            .then(response => {
-                console.log("2th then:", response)
+                console.log(response)
                 setResponseObj(response)
+                setLoading(false)
+            })
+            .catch(error => {
+                setError(true)
+                setLoading(false)
+                console.log(error.status)
             })
     }
 
-
     return (
         <>
-            {/* JSX-code will go here */}
-            <h2>Find Current Weather Conditions</h2>
-            <div>
-                {JSON.stringify(responseObj)}
-            </div>
-            <button onClick={getForecast}>Get Forecast</button>
+            <h2 className={style.headerForecast}>Forecast Weather 7 days</h2>
+
+            <DaysList
+                responseObj={responseObj}
+                loading={loading}
+                error={error}
+            />
+
+            {/* {JSON.stringify(responseObj)} */}
+
+            <div>{formattedDate(1613403644, responseObj)}</div>
+
+            <button onClick={getForecast} className={style.Button} >Get Forecast</button>
+
+
         </>
     )
 }

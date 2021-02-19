@@ -1,0 +1,16 @@
+.appHeader {
+    display:flex;
+    flex-direction: column;
+    max-height: 150px;
+    width: 100%;
+    background-color: #383c42;
+  }
+  .appHeader h1{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+  .appHeader p{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size: 0.6em;
+  }

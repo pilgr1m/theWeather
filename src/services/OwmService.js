@@ -1,20 +1,28 @@
-class OwmService {
-    // const _APIKEY = "30e6b4f237af660a7c482fbf7ecb5c62"
-    // const _baseURL = "api.openweathermap.org/data/2.5/weather?q"
-
-    // `_baseURL={city name},{state code}&appid={API key}`
-
-    //fucn for get data from fetch
-    getResourses() {
-        //fetch
-        //data.json
+export default class OwmService {
+    // const _API_KEY = "30e6b4f237af660a7c482fbf7ecb5c62"
+    constructor() {
+        this._baseUrl = "https://api.openweathermap.org"
+    }
+    //main func fetch
+    async getResources(url) {
+        const response = await fetch(`${this._baseUrl}${url}`)
+        console.log(`${this._baseUrl}${url}`)
+        if (!response.ok) {
+            throw new Error(`Could not fetch ${url}, received ${response.status}`)
+        }
+        return await response.json()
     }
 
-    getCurrentWeather() {
-        //fucntion for getting current weather in location
+    //get current weather
+    getCurrentWeather(unit = "metric", city, apikey) {
+        return this.getResources(`/data/2.5/weather?&units=${unit}&q=${city}&appid=${apikey}`)
     }
 
-
+    //forecast 8-days
+    getForecastSevenDays(apikey) {
+        return this.getResources(`/data/2.5/onecall?lat=50.4333&lon=30.5167&exclude=current,minutely,hourly&appid=${apikey}`)
+        // return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=daily&appid=${apikey}`)
+    }
 
 }
-export default OwmService
+

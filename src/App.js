@@ -1,27 +1,33 @@
 import React from 'react'
-import Forecast from "./components/Forecast/"
+import CurrentWeather from "./components/currentWeather"
+import Forecast from "./components/forecast/Forecast"
 import './App.css'
+import AppHeader from './components/appHeader/AppHeader'
+import AppFooter from './components/appFooter/AppFooter'
+import { Switch, Route } from "react-router-dom"
 
+const App = () => {
+	return (
+		<div className="app">
+			<AppHeader />
 
-function App() {
+			{/* <Switch>
+				<Route path="/current"
+					component={CurrentWeather}
+					exact />
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1> WEZER -Weather app</h1>
-      </header>
+				<Route path="/forecast"
+					component={Forecast}
+					exact />
 
-      <main className="App-main">
-        <Forecast />
-      </main>
+			</Switch> */}
 
-      <footer className="App-footer">
-        App created by <a href="#" className="App-link"> Ivan Volokha </a> 2021
-      </footer>
+			<CurrentWeather />
+			{/* <Forecast /> */}
 
-    </div>
-  )
-
+			<AppFooter />
+		</div>
+	)
 }
 
-export default App;
+export default App

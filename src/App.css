@@ -1,4 +1,5 @@
-.App {
+.app {
+  width: 100%;
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
@@ -7,31 +8,5 @@
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-header {
-  display:flex;
-  flex-direction: column;
-  min-height: 300px;
-}
-
-.App-main {
-  flex-grow: 1;
-  text-align: center;
-  padding: 25px;
-}
-
-.App-link {
-  color: #61dafb;
-  text-decoration: none;
-}
-
-.App-footer {
-  padding: 2px;
-  min-height: 100px;
-  display: flex;
-  flex-direction: column;
-  font-size: small;
-  text-align: center;
 }
 

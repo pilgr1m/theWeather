@@ -1,0 +1,12 @@
+.headerForecast {
+    color: rgb(175, 124, 211);
+    border-top: 1px solid ;
+}
+.Button {
+    border-radius: 4px;
+    height: 30px;
+    margin-left: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(108, 52, 148); 
+}
