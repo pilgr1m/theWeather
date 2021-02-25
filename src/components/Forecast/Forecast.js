@@ -1,57 +1,80 @@
-import React, { useState } from 'react'
-import OwmService from "../../services/OwmService"
+import React from 'react'
+import ForecastList from "../forecastList/ForecastList"
+import { connect } from "react-redux"
+import WithOwmService from "../hoc/WithOwmService"
+import {
+    dataReceived, dataError, dataLoading,
+    setUnit, setCity, setLat, setLon
+} from "../../redux/actions"
 import { formattedDate } from "../helpers/Helpers"
+
 import style from "./Forecast.module.css"
-import DaysList from '../daysList/DaysList'
 
 
-const Forecast = () => {
-    // const _API_KEY = "30e6b4f237af660a7c482fbf7ecb5c62"
-    const owmService = new OwmService()
+const Forecast = (props) => {
 
-    let [responseObj, setResponseObj] = useState({})
-    let [error, setError] = useState(false);
-    let [loading, setLoading] = useState(false);
+
+    let { OwmService, data, unit, city, error, loading, lat, lon } = props
+    let { dataReceived, dataError, dataLoading, setUnit, setCity, setLat, setLon } = props
+
+    console.log(lat)
+    console.log(lon)
+
 
     function getForecast() {
-        setError(false)
-        setResponseObj({})
-        setLoading(true)
+        dataError(false)
+        dataLoading(true)
 
         const API_KEY = process.env.REACT_APP_API_KEY
 
-        owmService.getForecastSevenDays(API_KEY)
+        OwmService.getForecast8Days(lat, lon, API_KEY)
             .then(response => {
                 console.log(response)
-                setResponseObj(response)
-                setLoading(false)
+                dataReceived(response)
+                dataLoading(false)
             })
             .catch(error => {
-                setError(true)
-                setLoading(false)
+                dataError(true)
+                dataLoading(false)
                 console.log(error.status)
             })
     }
 
     return (
-        <>
-            <h2 className={style.headerForecast}>Forecast Weather 7 days</h2>
+        <section>
+            <h2 className={style.headerForecast}> 8-day Forecast</h2>
 
-            <DaysList
-                responseObj={responseObj}
+            <ForecastList
+                data={data}
                 loading={loading}
                 error={error}
             />
 
-            {/* {JSON.stringify(responseObj)} */}
 
-            <div>{formattedDate(1613403644, responseObj)}</div>
+            <div>{formattedDate(1613403644, data)}</div>
 
             <button onClick={getForecast} className={style.Button} >Get Forecast</button>
 
 
-        </>
+        </section>
     )
 }
 
-export default Forecast
+
+
+const mapStateToProps = (state) => {
+    return {
+        data: state.data,
+        error: state.error,
+        loading: state.loading,
+        lat: state.lat,
+        lon: state.lon
+    }
+}
+
+const mapDispatchToProps = {
+    dataReceived, dataError, dataLoading,
+    setLat, setLon
+}
+
+export default WithOwmService()(connect(mapStateToProps, mapDispatchToProps)(Forecast))

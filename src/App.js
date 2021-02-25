@@ -5,25 +5,26 @@ import './App.css'
 import AppHeader from './components/appHeader/AppHeader'
 import AppFooter from './components/appFooter/AppFooter'
 import { Switch, Route } from "react-router-dom"
+import Accordion from "./components/accordion/Accordion"
 
 const App = () => {
 	return (
 		<div className="app">
 			<AppHeader />
 
-			{/* <Switch>
-				<Route path="/current"
-					component={CurrentWeather}
-					exact />
+			<Switch>
+				<Route exact path="/current-weather" >
+					<CurrentWeather />
+				</Route>
+				<Route exact path="/8-days-forecast"
+					component={Forecast}>
+				</Route>
+				<Route exact path="/accordion">
+					<Accordion />
+				</Route>
+			</Switch>
 
-				<Route path="/forecast"
-					component={Forecast}
-					exact />
-
-			</Switch> */}
-
-			<CurrentWeather />
-			{/* <Forecast /> */}
+			<Accordion />
 
 			<AppFooter />
 		</div>

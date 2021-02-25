@@ -14,8 +14,7 @@ h2 {
 }
 .TextInput:focus {
     outline: none;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px rgb(129, 145, 160);
+    border-color: #3793f5;
 }
 .Radio {
     font-size: small;
@@ -32,4 +31,9 @@ h2 {
     cursor: pointer;
     margin: 5px auto;
     border: none;
+}
+
+.weatherForm{
+    border-bottom: solid 1px black;
+    padding-bottom: 20px;
 }

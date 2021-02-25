@@ -2,13 +2,13 @@ import React from 'react'
 import Spinner from "../spinner/Spinner"
 import Error from "../error/Error"
 import { formattedDate } from "../helpers/Helpers"
-import style from "./DaysList.module.css"
+import style from "./ForecastList.module.css"
 
-const DaysList = ({ loading, error, responseObj }) => {
-    let days = responseObj.daily
+const ForecastList = ({ loading, error, data }) => {
+    let days = data.daily
 
     function dayList() {
-        console.log(responseObj)
+        console.log(data)
         return days.map(day => {
             return (
                 <li key={day.dt} className={style.listItem}>
@@ -31,7 +31,7 @@ const DaysList = ({ loading, error, responseObj }) => {
 
             <div>
                 <h3 > 8-day forecast </h3>
-                {responseObj.daily
+                {data.daily
                     ? dayList()
                     : null
                 }
@@ -39,7 +39,7 @@ const DaysList = ({ loading, error, responseObj }) => {
         </>
     )
 }
-export default DaysList
+export default ForecastList
 
 
 

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import ItemDetails from "../itemDetails/ItemDetails"
+import CurrentWeatherDetails from "../currentWeatherDetails/CurrentWeatherDetails"
 import { connect } from "react-redux"
 import WithOwmService from "../hoc/WithOwmService"
 import {
-    dataLoaded, dataError, dataRequest,
-    setUnit, setCity
+    dataReceived, dataError, dataLoading,
+    setUnit, setCity, setLat, setLon
 } from "../../redux/actions"
 
 import style from "./CurrentWeather.module.css"
@@ -12,102 +12,81 @@ import style from "./CurrentWeather.module.css"
 
 const CurrentWeather = (props) => {
 
-    let { unit, city, error, loading, OwmService } = props
-    let { dataLoaded, dataError, dataRequest, setUnit, setCity } = props
+    let { OwmService, unit, city, error, loading, lat, lon } = props
+    let { dataReceived, dataError, dataLoading, setUnit, setCity, setLat, setLon } = props
+
+    console.log(city)
+    console.log(error)
+    console.log(loading)
 
     useEffect(() => {
-        dataRequest()
-        getWeather()
+        // getWeather()
+        // setUnit(unit)
     }, [])
 
-    const getWeather = () => {
-        console.log("props:: ", props)
-        console.log("owmService:: ", OwmService)
-        const uriEncodedCity = encodeURIComponent(city = "Kyiv")
+    function getWeather(event) {
+        event.preventDefault()
+        if (city.length === 0) {
+            dataReceived({})
+            return dataError(true)
+
+        }
+
+        dataError(false)
+        dataLoading(true)
+
+        //кодер для правильных запросов (изменяет "неправильные" символы)
+        const uriEncodedCity = encodeURIComponent(city)
+        //для безопасности своего АПИключа, когда выложишь на гитхаб
         const API_KEY = process.env.REACT_APP_API_KEY
 
-        // owmService.getCurrentWeather(unit, uriEncodedCity, API_KEY)
-        OwmService.getCurrentWeather("metric", uriEncodedCity, API_KEY)
+        OwmService.getCurrentWeather(unit, uriEncodedCity, API_KEY)
             .then((response) => {
+                if (response.cod !== 200) {
+                    throw new Error()
+                }
                 console.log(response)
-                return dataLoaded(response)
+                dataReceived(response)
+                dataLoading(false)
+                dataError(false)
             })
             .catch(error => {
                 console.log(error)
-                dataError()
+                dataLoading(false)
+                dataError(true)
             })
+
+        //занулить input "город"    
+        setCity("")
     }
 
-    const setValue = (value) => {
-        return value
-    }
-
-    // function getWeather(event) {
-    //     const owmService = props
-    //     event.preventDefault();
-    //     if (city.length === 0) {
-    //         return setError(true);
-    //     }
-
-    //     setError(false)
-    //     setLoading(true)
-
-    //     const uriEncodedCity = encodeURIComponent(city)
-    //     const API_KEY = process.env.REACT_APP_API_KEY
-
-    //     owmService.getCurrentWeather(unit, uriEncodedCity, API_KEY)
-    //         .then(response => {
-    //             if (response.cod !== 200) {
-    //                 throw new Error()
-    //             }
-    //             console.log(response)
-    //             // setResponseObj(response)
-    //             setLoading(false)
-    //         })
-    //         .catch(error => {
-    //             setError(true)
-    //             setLoading(false)
-    //             console.log(error.status)
-    //         })
-    // }
-
-    function createInput(value, title) {
+    function createInput(unitName, title) {
         return (
             <label>
                 <input
                     className={style.Radio}
                     type="radio"
                     name="units"
-                    checked={unit === value}
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)} />
+                    checked={unit === unitName}
+                    value={unitName}
+                    onChange={(e) => setUnit(e.target.value)} />
                 {title}
             </label>
         )
     }
 
-    function foo(params) {
-        return null
-    }
-
     return (
-        <>
-            <h2>Find Current Weather Conditions</h2>
-            <ItemDetails
-                data={props.data}
-                loading={loading}
-                error={error}
-            />
+        <section>
+            <h2>Current Weather Conditions</h2>
 
-            <form onSubmit={foo}>
+            <form onSubmit={getWeather} className={style.weatherForm}>
                 <input
                     className={style.TextInput}
                     type="text"
                     placeholder="Enter City"
                     maxLength="50"
                     value={city}
-                    onChange={(e) => setValue(e.target.value)} />
-
+                    onChange={(e) => setCity(e.target.value)} />
 
                 {createInput("imperial", "Fahrenheit")}
                 {createInput("metric", "Celcius")}
@@ -115,7 +94,13 @@ const CurrentWeather = (props) => {
                 <button className={style.Button} type="submit">Find Weather</button>
 
             </form>
-        </>
+
+            <CurrentWeatherDetails
+                data={props.data}
+                loading={loading}
+                error={error}
+            />
+        </section>
     )
 }
 
@@ -125,13 +110,15 @@ const mapStateToProps = (state) => {
         city: state.city,
         unit: state.unit,
         error: state.error,
-        loading: state.loading
+        loading: state.loading,
+        lat: state.lat,
+        lon: state.lon
     }
 }
 
 const mapDispatchToProps = {
-    dataLoaded, dataError, dataRequest,
-    setUnit, setCity
+    dataReceived, dataError, dataLoading,
+    setUnit, setCity, setLat, setLon
 }
 
 export default WithOwmService()(connect(mapStateToProps, mapDispatchToProps)(CurrentWeather))

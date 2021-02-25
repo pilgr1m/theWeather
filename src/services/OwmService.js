@@ -14,13 +14,13 @@ export default class OwmService {
     }
 
     //get current weather
-    getCurrentWeather(unit = "metric", city, apikey) {
+    getCurrentWeather(unit, city, apikey) {
         return this.getResources(`/data/2.5/weather?&units=${unit}&q=${city}&appid=${apikey}`)
     }
 
     //forecast 8-days
-    getForecastSevenDays(apikey) {
-        return this.getResources(`/data/2.5/onecall?lat=50.4333&lon=30.5167&exclude=current,minutely,hourly&appid=${apikey}`)
+    getForecast8Days(lat, lon, apikey) {
+        return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&appid=${apikey}`)
         // return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=daily&appid=${apikey}`)
     }
 

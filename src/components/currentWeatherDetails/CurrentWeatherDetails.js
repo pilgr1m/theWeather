@@ -1,9 +1,9 @@
 import React from 'react'
 import Error from "../error/Error"
 import Spinner from '../spinner/Spinner'
-import style from "./ItemDetails.module.css"
+import style from "./CurrentWeatherDetails.module.css"
 
-const ItemDetails = ({ error, loading, data }) => {
+const CurrentWeatherDetails = ({ error, loading, data }) => {
     //иконка - https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png
 
     function nameMonth(month) {
@@ -96,4 +96,4 @@ const ItemDetails = ({ error, loading, data }) => {
         </div>
     )
 }
-export default ItemDetails
+export default CurrentWeatherDetails

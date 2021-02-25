@@ -1,32 +1,48 @@
-const dataLoaded = (newData) => {
+const dataReceived = (newData) => {
     return {
-        type: "DATA_LOADED",
+        type: "DATA_RECEIVED",
         payload: newData
     }
 }
-const dataError = () => {
+const dataError = (newError) => {
     return {
         type: "DATA_ERROR",
+        error: newError
     }
 }
-const dataRequest = () => {
+const dataLoading = (newLoading) => {
     return {
-        type: "DATA_REQUEST",
+        type: "DATA_LOADING",
+        loading: newLoading
 
     }
 }
-const setUnit = (unit) => {
+const setUnit = (newUnit) => {
     return {
         type: "SET_UNIT",
+        unit: newUnit
     }
 }
-const setCity = (city) => {
+const setCity = (newCity) => {
     return {
         type: "SET_CITY",
+        city: newCity
+    }
+}
+const setLat = (newLat) => {
+    return {
+        type: "SET_LAT",
+        lat: newLat
+    }
+}
+const setLon = (newLon) => {
+    return {
+        type: "SET_LON",
+        lon: newLon
     }
 }
 
 export {
-    dataLoaded, dataError, dataRequest,
-    setUnit, setCity
+    dataReceived, dataError, dataLoading,
+    setUnit, setCity, setLat, setLon
 }
