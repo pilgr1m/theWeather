@@ -1,80 +1,47 @@
 import React from 'react'
-import ForecastList from "../forecastList/ForecastList"
-import { connect } from "react-redux"
-import WithOwmService from "../hoc/WithOwmService"
-import {
-    dataReceived, dataError, dataLoading,
-    setUnit, setCity, setLat, setLon
-} from "../../redux/actions"
+import Spinner from "../spinner/Spinner"
+import Error from "../error/Error"
 import { formattedDate } from "../helpers/Helpers"
 
 import style from "./Forecast.module.css"
+import iconMini from "../../images/mini-icon.svg"
+
+const Forecast = ({ loading, error, data, unit }) => {
+	let days = data.daily
 
 
-const Forecast = (props) => {
+	function dayList() {
 
+		return days.map(day => {
+			return (
+				<div key={day.dt} className={style.day}>
 
-    let { OwmService, data, unit, city, error, loading, lat, lon } = props
-    let { dataReceived, dataError, dataLoading, setUnit, setCity, setLat, setLon } = props
+					<span> {formattedDate(day.dt, data)}  </span>
+					<div>
+						<img className={style.iconMini} src={iconMini} alt="iconMini" />
+					</div>
+					<span>
+						{Math.round(day.temp.day)}&deg;{unit === "metric" ? "C " : "F "}
+					</span>
+				</div>
+			)
+		})
+	}
 
-    console.log(lat)
-    console.log(lon)
+	return (
+		<div className={style.wrapperForecast}>
+			{error && <Error />}
+			{loading && <Spinner />}
 
+			<div className={style.dayList}>
+				{data.daily ? dayList() : null}
+			</div>
 
-    function getForecast() {
-        dataError(false)
-        dataLoading(true)
-
-        const API_KEY = process.env.REACT_APP_API_KEY
-
-        OwmService.getForecast8Days(lat, lon, API_KEY)
-            .then(response => {
-                console.log(response)
-                dataReceived(response)
-                dataLoading(false)
-            })
-            .catch(error => {
-                dataError(true)
-                dataLoading(false)
-                console.log(error.status)
-            })
-    }
-
-    return (
-        <section>
-            <h2 className={style.headerForecast}> 8-day Forecast</h2>
-
-            <ForecastList
-                data={data}
-                loading={loading}
-                error={error}
-            />
-
-
-            <div>{formattedDate(1613403644, data)}</div>
-
-            <button onClick={getForecast} className={style.Button} >Get Forecast</button>
-
-
-        </section>
-    )
+		</div>
+	)
 }
+export default Forecast
 
 
 
-const mapStateToProps = (state) => {
-    return {
-        data: state.data,
-        error: state.error,
-        loading: state.loading,
-        lat: state.lat,
-        lon: state.lon
-    }
-}
 
-const mapDispatchToProps = {
-    dataReceived, dataError, dataLoading,
-    setLat, setLon
-}
-
-export default WithOwmService()(connect(mapStateToProps, mapDispatchToProps)(Forecast))

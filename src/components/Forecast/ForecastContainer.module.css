@@ -1,0 +1,23 @@
+.forecastContainer {
+    position: absolute;
+    top: 650px;
+}
+
+.titleForecast {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.button {
+    position: relative;
+    top: -50px;
+    left: 250px;
+    font-size: 14px;
+
+    height: 40px;
+    width: 100px;
+    border-radius: 100px;
+    color: #000000;
+    background-color: #ffffff;
+    border:none;
+}

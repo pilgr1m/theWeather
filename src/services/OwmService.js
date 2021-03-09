@@ -19,9 +19,9 @@ export default class OwmService {
     }
 
     //forecast 8-days
-    getForecast8Days(lat, lon, apikey) {
-        return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&appid=${apikey}`)
-        // return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=daily&appid=${apikey}`)
+    getForecast8Days(unit, lat, lon, apikey) {
+        return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,minutely,hourly&appid=${apikey}`)
+        // return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&appid=30e6b4f237af660a7c482fbf7ecb5c62`)
     }
 
 }

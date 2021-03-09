@@ -1,4 +1,5 @@
 const dataReceived = (newData) => {
+    console.log(newData)
     return {
         type: "DATA_RECEIVED",
         payload: newData
@@ -15,12 +16,6 @@ const dataLoading = (newLoading) => {
         type: "DATA_LOADING",
         loading: newLoading
 
-    }
-}
-const setUnit = (newUnit) => {
-    return {
-        type: "SET_UNIT",
-        unit: newUnit
     }
 }
 const setCity = (newCity) => {
@@ -44,5 +39,5 @@ const setLon = (newLon) => {
 
 export {
     dataReceived, dataError, dataLoading,
-    setUnit, setCity, setLat, setLon
+    setCity, setLat, setLon
 }

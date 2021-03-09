@@ -1,0 +1,60 @@
+.wrapper {
+    position: absolute;
+    top: 198px;
+    width: 1140px;
+    height: 320px;
+    text-align: left;
+}
+
+.date{
+    position: relative;
+    left: -2px;
+    color: #000000;
+    font-size: 30px;
+}
+
+.city{
+    position: absolute;
+    top: 20px;
+    left: -4px;
+    font-size: 110px;
+    font-weight: 600;
+}
+
+.tempDegrees{
+    position: absolute;
+    right: -46px;
+    top: -72px;
+    font-size: 300px;
+    font-weight: 500;
+}
+
+.others {
+    position: absolute;
+    left: -1px;
+    bottom: 32px;
+
+}
+
+.others .feelsLike {
+    font-size: 20px;
+    font-weight: normal;
+}
+.others .wph {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    width: 520px;
+}
+
+.others .descr {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.icon {
+    position: absolute;
+    left: 570px;
+    top: -220px;
+    z-index: -1;
+}

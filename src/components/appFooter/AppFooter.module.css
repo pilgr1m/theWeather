@@ -1,11 +1,12 @@
   .appFooter {
-    padding-top: 20px;
-    /* position: fixed; */
+    padding-top: 8px;
+    position: fixed;
     bottom: 0;
-    padding: 20px;
+    padding: 8px;
     font-size: small;
     text-align: center;
-    /* background-color: rgba(250, 246, 0, 0.3); */
+    background-color: #282c34;
+    border: solid 1px rgba(90, 90, 68, 0.3)
 }
 
 .footerLink {
