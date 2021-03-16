@@ -1,21 +1,38 @@
 const initialState = {
     dataWeather: {},
+    dataForecast: {},
     unit: "metric",
     city: "",
     error: false,
     loading: false,
-    lat: null,
-    lon: null,
 }
 
-console.log("dataWeather -- ", initialState.dataWeather)
 
 const weatherReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "DATA_RECEIVED":
+        case "DATA_RECEIVED_WEATHER":
             return {
                 ...state, dataWeather: action.payload
             }
+        case "DATA_RECEIVED_FORECAST":
+            return {
+                ...state, dataForecast: action.payload
+            }
+        // case "ADD_CARD_DAY_FORECAST":
+        //     const id = action.id
+        //     const item = state.menu.find(item => item.id === id)
+        //     const newItem = {
+        //         title: item.title,
+        //         url: item.url,
+        //         // etc...
+        //     }
+        //     return {
+        //         ...state,
+        //         item: [
+        //             ...state.items,
+        //             newItem
+        //         ]
+        //     }
         case "DATA_ERROR":
             return {
                 ...state, error: action.error

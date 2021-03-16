@@ -28,22 +28,43 @@ function getNameDay(month) {
 	}
 }
 
-function formattedDate(value, data) {
-
+function formatDateForecast(value, data) {
 	const timezone = data.timezone_offset
 		? (data.timezone_offset - 7200)
 		: (data.timezone - 7200)
-	console.log(timezone)
 	const date = new Date((value + timezone) * 1000);
-	// const minutes = date.getMinutes();
-	// const hours = date.getHours();
 	const dayMonth = date.getDate();
 	const dayWeek = date.getDay();
 	const month = date.getMonth();
-	return `${getNameDay(dayWeek)} ${getNameMonth(month)} ${dayMonth}`;
+	return `${getNameDay(dayWeek).toUpperCase()}, ${getNameMonth(month)} ${dayMonth}`;
+}
+
+function convertTemp(unitName, value) {
+	return (unitName === "metric")
+		? `${Math.round(value)}°C`
+		: `${Math.round(((value) * 1.8) + 32)}°F`
+}
+function convertWind(unitName, value) {
+	return (unitName === "metric")
+		? `${value}m/s `
+		: `${(value * 2.237).toFixed(1)}mph `
 }
 
 
+
+function formatDateWeather(value, data) {
+	const timezone = (data.timezone - 7200)
+	const date = new Date((value + timezone) * 1000);
+	const minutes = date.getMinutes();
+	const hours = date.getHours();
+	const dayMonth = date.getDate();
+	const dayWeek = date.getDay();
+	const month = date.getMonth();
+	return `${getNameDay(dayWeek)} • ${hours}:${minutes <= 9 ? `0${minutes}` : minutes}${hours >= 11 ? "pm" : "am"}, ${getNameMonth(month)} ${dayMonth}`;
+}
+
 export {
-	getNameMonth, getNameDay, formattedDate
+	getNameMonth, getNameDay, formatDateForecast,
+	convertTemp, convertWind, formatDateWeather
+
 }

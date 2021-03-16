@@ -1,7 +1,6 @@
-const dataReceived = (newData) => {
-    console.log(newData)
+const dataReceivedWeather = (newData) => {
     return {
-        type: "DATA_RECEIVED",
+        type: "DATA_RECEIVED_WEATHER",
         payload: newData
     }
 }
@@ -24,20 +23,23 @@ const setCity = (newCity) => {
         city: newCity
     }
 }
-const setLat = (newLat) => {
+
+const dataReceivedForecast = (newData) => {
     return {
-        type: "SET_LAT",
-        lat: newLat
+        type: "DATA_RECEIVED_FORECAST",
+        payload: newData
     }
+
 }
-const setLon = (newLon) => {
-    return {
-        type: "SET_LON",
-        lon: newLon
-    }
-}
+// const addCardDayForecast = (newId) => {
+//     return {
+//         type: "ADD_CARD_DAY_FORECAST",
+//         id: newId
+//     }
+// }
 
 export {
-    dataReceived, dataError, dataLoading,
-    setCity, setLat, setLon
+    dataReceivedWeather, dataError, dataLoading,
+    setCity, dataReceivedForecast,
+    //  addCardDayForecast
 }

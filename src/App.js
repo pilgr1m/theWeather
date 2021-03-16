@@ -1,6 +1,4 @@
 import React from 'react'
-import WeatherContainer from "./components/weather/WeatherContainer"
-import ForecastContainer from "./components/forecast/ForecastContainer"
 import './App.css'
 import AppHeader from './components/appHeader/AppHeader'
 import AppFooter from './components/appFooter/AppFooter'
@@ -14,6 +12,7 @@ const App = () => {
 			<AppHeader />
 
 			<AppWrapper />
+
 			<AppFooter />
 		</div>
 	)

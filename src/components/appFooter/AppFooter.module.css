@@ -1,16 +1,21 @@
   .appFooter {
-    padding-top: 8px;
+    margin: 0 auto;
+    padding-top: 4px;
     position: fixed;
     bottom: 0;
-    padding: 8px;
-    font-size: small;
+    font-size: 12px;
+	font-weight: 300;
     text-align: center;
-    background-color: #282c34;
-    border: solid 1px rgba(90, 90, 68, 0.3)
+    background: transparent;
+	color: #000000;
+	border: 1px solid #ffffff;
+	border-radius: 100px;
 }
 
 .footerLink {
-    color: #61dafb;
+    font-size: 12px;
+	font-weight: 300;
+    color: #ffffff;
     text-decoration: none;
 }
 

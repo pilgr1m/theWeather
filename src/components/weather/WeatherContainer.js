@@ -1,56 +1,50 @@
 import React, { useState } from 'react'
-import Weather from "./Weather"
+import Weather from "./components/Weather"
+import Forecast from "./components/Forecast"
 import { connect } from "react-redux"
 import WithOwmService from "../hoc/WithOwmService"
 import {
-    dataReceived, dataError, dataLoading,
-    setCity, setLat, setLon
+    dataReceivedWeather, dataError, dataLoading,
+    setCity, dataReceivedForecast
 } from "../../redux/weather/actions"
 
 import style from "./WeatherContainer.module.css"
 import search from "../../images/search.svg"
 
 const WeatherContainer = (props) => {
-    let { OwmService, unit, city, error, loading } = props
-    let { dataReceived, dataError, dataLoading, setCity, setLat, setLon } = props
+
+    let { OwmService, dataReceivedWeather, dataError,
+        dataLoading, setCity, dataReceivedForecast,
+        dataWeather, dataForecast, city, unit, error, loading } = props
 
     const [unitName, setUnitName] = useState(unit)
-    // console.log(city)
-    // console.log(error)
-    // console.log(loading)
-    console.log("redux -", unit)
-    console.log("local state -", unitName)
 
     function getWeather(event) {
         event.preventDefault()
         if (city.length === 0) {
-            dataReceived({})
+            dataReceivedWeather({})
             return dataError(true)
         }
         dataError(false)
         dataLoading(true)
 
         fetchWeather()
-
-        //занулить input "город"   
         setCity("")
     }
 
-    function fetchWeather() {
+    async function fetchWeather() {
         //кодер для правильных запросов (изменяет "неправильные" символы)
         const uriEncodedCity = encodeURIComponent(city)
         //для безопасности своего АПИключа, когда выложишь на гитхаб
         const API_KEY = process.env.REACT_APP_API_KEY
 
-        OwmService.getCurrentWeather(unit, uriEncodedCity, API_KEY)
+        await OwmService.getCurrentWeather(unit, uriEncodedCity, API_KEY)
             .then((response) => {
                 if (response.cod !== 200) {
                     throw new Error()
                 }
-
-                dataReceived(response)
-                setLat(response.coord.lat)
-                setLon(response.coord.lon)
+                dataReceivedWeather(response)
+                getForecast(response.coord.lat, response.coord.lon)
                 dataLoading(false)
                 dataError(false)
             })
@@ -59,6 +53,32 @@ const WeatherContainer = (props) => {
                 dataLoading(false)
                 dataError(true)
             })
+    }
+
+
+    function fetchForecast(unit, lat, lon) {
+        const API_KEY = process.env.REACT_APP_API_KEY
+        OwmService.getForecast8Days(unit, lat, lon, API_KEY)
+            .then(response => {
+                dataReceivedForecast(response)
+                dataLoading(false)
+            })
+            .catch(error => {
+                dataError(true)
+                dataLoading(false)
+                console.log(error.status)
+            })
+    }
+
+    function getForecast(lat, lon) {
+        if (!lat && !lon) {
+            dataReceivedForecast({})
+            return dataError(true)
+        }
+        dataError(false)
+        dataLoading(true)
+
+        fetchForecast(unit, lat, lon)
     }
 
     function createInput(name, title) {
@@ -90,7 +110,7 @@ const WeatherContainer = (props) => {
                     <img src={search} alt="search" />
                 </div>
 
-                <button type="submit">Search</button>
+                <button className={style.buttonSubmit} type="submit">Search</button>
 
                 <div className={style.wrapperRadio}>
                     {createInput("metric", "°C")}
@@ -99,26 +119,30 @@ const WeatherContainer = (props) => {
 
             </form>
 
-            <Weather data={props.data} unitName={unitName} loading={loading} error={error} />
+            <Weather dataWeather={dataWeather} unitName={unitName} loading={loading} error={error} />
+
+            <Forecast dataForecast={dataForecast} unitName={unitName} loading={loading} error={error} />
+
         </div>
     )
 }
 
+
 const mapStateToProps = (state) => {
     return {
-        data: state.weather.dataWeather,
+        state: state.weather,
+        dataWeather: state.weather.dataWeather,
+        dataForecast: state.weather.dataForecast,
         city: state.weather.city,
         unit: state.weather.unit,
         error: state.weather.error,
         loading: state.weather.loading,
-        lat: state.weather.lat,
-        lon: state.weather.lon
     }
 }
 
 const mapDispatchToProps = {
-    dataReceived, dataError, dataLoading,
-    setCity, setLat, setLon
+    dataReceivedWeather, dataError, dataLoading,
+    setCity, dataReceivedForecast
 }
 
 export default WithOwmService()(connect(mapStateToProps, mapDispatchToProps)(WeatherContainer))

@@ -13,17 +13,15 @@
 }
 
 .inputWrapper input{
+    margin-left: -1px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 19px 24px 19px 40px;
+    padding: 18px 24px 19px 20px;
     margin-top: 50px;
-    position: static;
-    width: 560px;
-    height: 62px;
-    left: 0px;
-    top: 0px;
+    width: 365px;
+    height: 50px;
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 100px;
@@ -34,47 +32,51 @@
 }
 
 .inputWrapper input::placeholder{
-	color: #000000ce;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-size: 400;
+    font-style: normal;
+	color: #000000;
 }
 
 .weatherForm img {
     position:relative;
-    width: 32px;
-    height: 32px;
-    top: 68px;
-    right: 74px;
+    width: 24px;
+    height: 24px;
+    top: 64px;
+    right: 48px;
+    pointer-events: none;
 }
 
-.weatherForm button {
+.weatherForm .buttonSubmit {
+    font-family: 'Poppins', sans-serif;
     display: block;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 19px 24px;
+    padding: 16px 59px;
     margin-top: 50px;
-    margin-left: -12px;
-    width: 160px;
-    height: 62px;
-    left: 580px;
-    top: 0px;
+    margin-left: -4px;
+    width: 174px;
+    height: 50px;
     background: #F1F1F1;
     border-radius: 100px;
     border:none;
-    font-size: 20px;
-    font-weight: medium;
+    font-size: 16px;
+    font-weight: 500;
     color: #000000;
     outline:none;
 }
 
 .wrapperRadio {
     position: absolute;
-	background-color: #c7c7c7;
+	background: linear-gradient(97.29deg, #ffffff54 8.3%, #e1e2e200 109.71%);
 	color:#000000;
     width: 88px;
-    height: 46px;
+    height: 45px;
     right: 0px;
     top: -37px;
-    border: solid 1px #FFFFFF;
+    border: solid 2px #FFFFFF;
     border-radius: 100px;
     display: flex;
 }
@@ -101,16 +103,14 @@
 
 .divRadio label span {
 	position: relative;
-	bottom: 12px;
+	top: 4px;
 	right: 2px;
 	font-size: 14px;
 }
 
 .divRadio input[type=radio]:checked + label {
-	background: #FFC804;
+	background: #ffc804;
 }
-.divRadio label:hover{
-	background: #ffc9043f;
-}
+
 
 

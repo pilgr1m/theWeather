@@ -1,0 +1,158 @@
+.wrapperForecast {
+    position: absolute;
+    top: 472px;
+}
+
+.wrapperForecast .title{
+    margin-left: -3px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.dayList {
+    display: flex;
+    margin-top: -2px;
+    margin-left: -20px;
+    width: 890px;
+    height: 230px;
+}
+
+.dayWrapper {
+    margin-left: 18px;
+    width: 96px;
+    background: linear-gradient(91.67deg, #ffffff54 3.41%, #e1e2e200 99.11%);
+    box-shadow: inset -5px -5px 10px #ffffff1a, inset 5px 5px 10px #fffefe1a;
+    border-radius: 100px;
+    border: 2px solid #ffffff;
+}
+
+.dayWrapper:hover {
+    background: linear-gradient(179.26deg, #ffc8044d 4.01%, #ffc80400 99.49%);
+    border-radius: 100px;
+    border: 2px solid #FFC804;
+}
+
+.day{
+    margin: 0 auto;
+    margin-top: 34px;
+    text-align: center;
+    width: 55px;
+    height: 158px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.dayDate {
+    line-height: 19px;
+}
+
+.iconMini{
+    color: #000000;
+    width: 42px;
+    height: 42px;
+}
+/* ----------
+card
+---------- */
+
+.cardWrapper {
+    opacity: 1;
+    position: absolute;
+    bottom: 88px;
+    left: 208px;
+
+    background: linear-gradient(113.84deg, #ffffff4d 1.56%, #ffffff00 100%);
+   
+    backdrop-filter: blur(16px);
+    border: solid 2px #ffffff;
+    border-radius: 40px;
+    width: 716px;
+    height: 496px;
+}
+
+.cardTitle {
+    margin: 54px 0 0 50px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.cardDescr {
+    margin: 12px 0 0 50px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.tempDescr {
+    margin: 20px 0 0 50px;
+    font-size: 20px;
+}
+
+.cardWph {
+    display: flex;
+    margin-left: 50px;
+    justify-content: space-between;
+    padding: 20px 0px 30px 0px;
+    font-size: 20px;
+    font-weight: 400;
+    width: 530px;
+}
+
+.tempForTime {
+    display: flex;
+    justify-content: space-between;
+    width: 570px;
+    margin: 0 auto;
+    margin-top: 22px;
+}
+.tempForTime .time{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 120px;
+    height: 150px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.tempForTime .time span{
+    font-size: 16px;
+    font-weight: 400;
+}
+.tempForTime .time .medi{
+    font-size: 20px;
+    font-weight: 500;
+}
+.tempForTime .time .semi{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.iconCard {
+    position: absolute;
+    top: 60px;
+    right: 58px;
+}
+
+.close{
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    top: 38px;
+    right: 34px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-image: url(../../../images/close-card.svg);
+    background-color: transparent;
+}
+
+
+
+
+
+
+

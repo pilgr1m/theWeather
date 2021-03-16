@@ -1,5 +1,4 @@
 export default class OwmService {
-    // const _API_KEY = "30e6b4f237af660a7c482fbf7ecb5c62"
     constructor() {
         this._baseUrl = "https://api.openweathermap.org"
     }
@@ -13,7 +12,7 @@ export default class OwmService {
         return await response.json()
     }
 
-    //get current weather
+    //get weather
     getCurrentWeather(unit, city, apikey) {
         return this.getResources(`/data/2.5/weather?&units=${unit}&q=${city}&appid=${apikey}`)
     }
@@ -21,7 +20,6 @@ export default class OwmService {
     //forecast 8-days
     getForecast8Days(unit, lat, lon, apikey) {
         return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,minutely,hourly&appid=${apikey}`)
-        // return this.getResources(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&appid=30e6b4f237af660a7c482fbf7ecb5c62`)
     }
 
 }
