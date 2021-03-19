@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/theWeather/static/css/main.fab24be5.chunk.css",
+    "main.js": "/theWeather/static/js/main.02ce9327.chunk.js",
+    "main.js.map": "/theWeather/static/js/main.02ce9327.chunk.js.map",
+    "runtime-main.js": "/theWeather/static/js/runtime-main.027a2ce3.js",
+    "runtime-main.js.map": "/theWeather/static/js/runtime-main.027a2ce3.js.map",
+    "static/js/2.6a1e8588.chunk.js": "/theWeather/static/js/2.6a1e8588.chunk.js",
+    "static/js/2.6a1e8588.chunk.js.map": "/theWeather/static/js/2.6a1e8588.chunk.js.map",
+    "index.html": "/theWeather/index.html",
+    "static/css/main.fab24be5.chunk.css.map": "/theWeather/static/css/main.fab24be5.chunk.css.map",
+    "static/js/2.6a1e8588.chunk.js.LICENSE.txt": "/theWeather/static/js/2.6a1e8588.chunk.js.LICENSE.txt",
+    "static/media/ForecastContainer.module.css": "/theWeather/static/media/close-card.d5a6ebcc.svg",
+    "static/media/search.595d4dfb.svg": "/theWeather/static/media/search.595d4dfb.svg",
+    "static/media/Spinner.module.css": "/theWeather/static/media/spinner.21c6c0c2.svg",
+    "static/media/theWeather.ceb83871.svg": "/theWeather/static/media/theWeather.ceb83871.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.027a2ce3.js",
+    "static/js/2.6a1e8588.chunk.js",
+    "static/css/main.fab24be5.chunk.css",
+    "static/js/main.02ce9327.chunk.js"
+  ]
+}
