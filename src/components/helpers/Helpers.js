@@ -28,17 +28,6 @@ function getNameDay(month) {
 	}
 }
 
-function formatDateForecast(value, data) {
-	const timezone = data.timezone_offset
-		? (data.timezone_offset - 7200)
-		: (data.timezone - 7200)
-	const date = new Date((value + timezone) * 1000);
-	const dayMonth = date.getDate();
-	const dayWeek = date.getDay();
-	const month = date.getMonth();
-	return `${getNameDay(dayWeek).toUpperCase()}, ${getNameMonth(month)} ${dayMonth}`;
-}
-
 function convertTemp(unitName, value) {
 	return (unitName === "metric")
 		? `${Math.round(value)}°C`
@@ -50,21 +39,55 @@ function convertWind(unitName, value) {
 		: `${(value * 2.237).toFixed(1)}mph `
 }
 
-
-
-function formatDateWeather(value, data) {
-	const timezone = (data.timezone - 7200)
+function formatDate(value, data, hour = false) {
+	const timezone = data.timezone_offset
+		? (data.timezone_offset - 7200)
+		: (data.timezone - 7200)
 	const date = new Date((value + timezone) * 1000);
 	const minutes = date.getMinutes();
 	const hours = date.getHours();
 	const dayMonth = date.getDate();
 	const dayWeek = date.getDay();
 	const month = date.getMonth();
-	return `${getNameDay(dayWeek)} • ${hours}:${minutes <= 9 ? `0${minutes}` : minutes}${hours >= 11 ? "pm" : "am"}, ${getNameMonth(month)} ${dayMonth}`;
+
+	const weather = `${getNameDay(dayWeek)} • ${hours}:${minutes <= 9 ? `0${minutes}` : minutes}${hours >= 11 ? "pm" : "am"}, ${getNameMonth(month)} ${dayMonth}`
+
+	const forecast = `${getNameDay(dayWeek).toUpperCase()}, ${getNameMonth(month)} ${dayMonth}`
+
+	return hour ? weather : forecast;
 }
 
+function getSrc(folder, cod) {
+	let src = `${process.env.PUBLIC_URL}/images/${folder}/${cod}.png`
+	let srcDn = `${process.env.PUBLIC_URL}/images/${folder}/`
+
+	switch (cod) {
+		case "01d":
+		case "01n":
+		case "02d":
+		case "02n": return src
+		case "03d":
+		case "03n": return `${srcDn}03dn.png`
+		case "04d":
+		case "04n": return `${srcDn}04dn.png`
+		case "09d":
+		case "09n": return `${srcDn}09dn.png`
+		case "10d":
+		case "10n": return src
+		case "11d":
+		case "11n": return `${srcDn}11dn.png`
+		case "13d":
+		case "13n": return `${srcDn}13dn.png`
+		case "50d":
+		case "50n": return src
+		default: return null
+	}
+}
+
+
 export {
-	getNameMonth, getNameDay, formatDateForecast,
-	convertTemp, convertWind, formatDateWeather
+	getNameMonth, getNameDay,
+	convertTemp, convertWind,
+	formatDate, getSrc
 
 }

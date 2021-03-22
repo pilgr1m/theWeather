@@ -1,17 +1,17 @@
 import React from 'react'
-import './App.css'
-import AppHeader from './components/appHeader/AppHeader'
-import AppFooter from './components/appFooter/AppFooter'
-import { Switch, Route } from "react-router-dom"
-import AppWrapper from './components/appWrapper/AppWrapper'
+import AppHeader from './components/AppHeader/AppHeader'
+import AppFooter from './components/AppFooter/AppFooter'
+import WeatherContainer from "./components/WeatherContainer/WeatherContainer"
+
+import "./App.css"
 
 
 const App = () => {
 	return (
-		<div className="wrapperApp">
+		<div className="mainWrapper">
 			<AppHeader />
 
-			<AppWrapper />
+			<WeatherContainer />
 
 			<AppFooter />
 		</div>

@@ -1,22 +1,22 @@
   .appFooter {
-    margin: 0 auto;
-    padding-top: 4px;
-    position: fixed;
-    bottom: 0;
+    margin-top: auto;
+    padding-top: 20px;
     font-size: 12px;
 	font-weight: 300;
     text-align: center;
     background: transparent;
 	color: #000000;
-	border: 1px solid #ffffff;
-	border-radius: 100px;
 }
 
 .footerLink {
-    font-size: 12px;
+    font-size: 11px;
 	font-weight: 300;
     color: #ffffff;
     text-decoration: none;
 }
 
-  
+@media (min-width: 320px) and (max-width: 576px) {
+    .appFooter{
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,163 @@
+.weatherForm {
+    display: flex;
+	width: 1140px;
+    height: 112px;
+    margin-top: 50px;
+}
+.inputWrapper {
+    display: flex;
+}
+
+.inputWrapper input{
+    margin-left: -1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 18px 24px 19px 20px;
+    width: 365px;
+    height: 50px;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 100px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #000000;
+    outline:none;
+}
+
+.inputWrapper input::placeholder{
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-size: 400;
+    font-style: normal;
+	color: #000000;
+}
+
+.weatherForm img {
+    position:relative;
+    width: 24px;
+    height: 24px;
+    top: 14px;
+    right: 48px;
+    pointer-events: none;
+}
+
+.weatherForm .buttonSubmit {
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    padding: 14px 59px;
+    width: 174px;
+    height: 50px;
+    background: #F1F1F1;
+    border-radius: 100px;
+    border:none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    outline:none;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.wrapperRadio {
+    position: absolute;
+    width: 88px;
+    height: 45px;
+    right: 10px;
+    top: 70px;
+    background: linear-gradient(145.65deg, #BBBBBB 21.43%, #898585 66.97%);
+	color:#000000;
+    border: solid 2px #FFFFFF;
+    border-radius: 100px;
+    display: flex;
+    z-index: 10;
+}
+
+.divRadio{
+	display: absolute;
+	margin-top: 6px;
+}
+
+.divRadio input[type=radio] {
+	display: none;
+}
+
+.divRadio label{
+	display: block;
+	cursor: pointer;
+	border-radius: 50%;
+	user-select: none;
+	width: 29px;
+	height: 29px;
+	text-align: center;
+	margin-left: 9px;
+}
+
+.divRadio label span {
+	position: relative;
+	top: 4px;
+	right: 2px;
+	font-size: 14px;
+}
+
+.divRadio input[type=radio]:checked + label {
+	background: #ffc804;
+}
+/* media */
+@media (min-width: 320px) and (max-width: 576px) {
+    .weatherForm {
+        margin-top: 20px;
+    }
+
+    .inputWrapper input{
+        padding: 18px 24px 19px 20px;
+        width: 300px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .inputWrapper input::placeholder{
+        font-size: 13px;
+    }
+    
+    .weatherForm img {
+        width: 20px;
+        height: 20px;
+        top: 11px;
+        right: 38px;
+    }
+    
+    .weatherForm .buttonSubmit {
+        position: relative;
+        right: 220px;
+        top: 46px;
+        padding: 2px 0 0 0;
+        width: 100px;
+        height: 38px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    
+    .wrapperRadio {
+        position: absolute;
+        right: 10px;
+        top: 16px;
+        width: 56px;
+        height: 30px;
+        border: solid 1px #FFFFFF;
+    }
+    
+    .divRadio{
+        display: absolute;
+        margin-top: 1px;
+    }
+
+    .divRadio label{
+        width: 28px;
+        height: 28px;
+        margin-left: 0px;
+    }
+    
+}
+

@@ -1,0 +1,317 @@
+.wrapperForecast {
+    position: relative;
+    top: 0px;
+    padding-top: 86px;
+}
+
+.wrapperForecast .title{
+    margin-left: -3px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.dayList {
+    display: flex;
+    margin-top: 14px;
+    margin-left: -20px;
+    width: 890px;
+    height: 230px;
+}
+
+.dayWrapper {
+    margin-left: 18px;
+    width: 96px;
+    background: linear-gradient(145.65deg, #BBBBBB 21.43%, #898585 66.97%);
+    box-shadow: inset -5px -5px 10px #ffffff1a, inset 5px 5px 10px #fffefe1a;
+    border-radius: 100px;
+    border: 2px solid #ffffff;
+}
+
+.dayWrapper:hover {
+    background: linear-gradient(179.26deg, #ffc8044d 4.01%, #ffc80400 99.49%);
+    border-radius: 100px;
+    border: 2px solid #FFC804;
+}
+
+.day{
+    margin: 0 auto;
+    margin-top: 34px;
+    text-align: center;
+    width: 55px;
+    height: 158px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dayDate {
+    line-height: 19px;
+}
+
+.iconMini{
+    color: #000000;
+    width: 42px;
+    height: 42px;
+}
+/* ----------
+card
+---------- */
+
+.cardWrapper {
+    opacity: 1;
+    position: absolute;
+    bottom: 88px;
+    left: 208px;
+
+    background: linear-gradient(113.84deg, #ffffff4d 1.56%, #ffffff00 100%);
+   
+    backdrop-filter: blur(16px);
+    border: solid 2px #ffffff;
+    border-radius: 40px;
+    width: 716px;
+    height: 496px;
+    z-index: 5;
+}
+
+.cardTitle {
+    margin: 54px 0 0 50px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.cardDescr {
+    margin: 12px 0 0 50px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.tempDescr {
+    margin: 20px 0 0 50px;
+    font-size: 20px;
+}
+
+.cardWph {
+    display: flex;
+    margin-left: 50px;
+    justify-content: space-between;
+    padding: 20px 0px 30px 0px;
+    font-size: 20px !important;
+    font-weight: 400;
+    width: 530px;
+}
+
+.tempForTime {
+    display: flex;
+    justify-content: space-between;
+    width: 570px;
+    margin: 0 auto;
+    margin-top: 22px;
+}
+.tempForTime .time{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 120px;
+    height: 150px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.tempForTime .time span{
+    font-size: 16px;
+    font-weight: 400;
+}
+.tempForTime .time .medi{
+    font-size: 20px;
+    font-weight: 500;
+}
+.tempForTime .time .semi{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.iconCard {
+    position: absolute;
+    top: 60px;
+    right: 58px;
+}
+
+.close{
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    top: 38px;
+    right: 34px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-image: url(../../images/close-card.svg);
+    background-color: transparent;
+}
+
+@media (max-width:1139px) {
+   
+}
+
+@media (max-width:767px) {
+    .dayList {
+        margin-left: -15px;
+        width: 800px;
+    }
+    
+    .dayWrapper {
+        margin-left: 10px;
+        width: 82px;
+    }
+    /* ----------
+    card
+    ---------- */
+    .cardWrapper {
+        bottom: 88px;
+        left: 100px;
+        width: 650px;
+        height: 476px;
+        z-index: 1000;
+    }
+}
+
+
+
+@media (min-width: 320px) and (max-width: 576px) {
+    .wrapperForecast {
+        position: relative;
+        top: 30px;
+        padding-top: 0px;
+    }
+    
+    .wrapperForecast .title{
+        margin-bottom: -10px;
+        margin-left: -3px;
+        font-size: 16px;
+    }
+    
+    .dayList {
+        display: flex;
+        margin-left: -20px;
+        width: 320px;
+        height: 130px;
+        overflow-x: scroll;
+    }
+    
+    .dayWrapper {
+        margin-left: 12px;
+        width: 86px;
+        border: 2x solid #ffffff;
+    }
+    
+    .day{
+        margin: 0 auto;
+        margin-top: 14px;
+        width: 50px;
+        height: 100px;
+        align-items: center;
+        font-size: 12px;
+    }
+   
+    .dayDate {
+        line-height: 16px;
+        font-size: 14px;
+    }
+    
+    .iconMini{
+        width: 40px;
+        height: 40px;
+    }
+    /* ----------
+    card
+    ---------- */
+    .cardWrapper {
+        opacity: 1;
+        position: absolute;
+        bottom: 100px;
+        left: 0px;
+        width: 300px;
+        height: 300px;
+        z-index: 100;
+    }
+    
+    .cardTitle {
+        margin: 34px 0 8px 20px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    
+    .cardDescr {
+        margin: 0 0 8px 20px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .tempDescr {
+        margin: 0 0 8px 20px;
+        font-size: 13px;
+    }
+    
+    .cardWph {
+        display: flex;
+        margin: 0 0 0 20px;
+        justify-content: space-between;
+        padding: 5px 0px 5px 0px;
+        font-size: 14px !important;
+        font-weight: 400;
+        width: 280px;
+        text-align: left;
+    }
+    
+    .tempForTime {
+        width: 300px;
+        margin-top: 24px;
+    }
+    .tempForTime .time{
+        width: 120px;
+        height: 90px;
+        font-weight: 500;
+    }
+    .tempForTime .time span{
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .tempForTime .time .medi{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .tempForTime .time .semi{
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .iconCard {
+        position: absolute;
+        width: 110px;
+        height: 110px;    
+        top: 34px;
+        right: 24px;
+        z-index: -2;
+    }
+    
+    .close{
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: 18px;
+        right: 24px;
+        background-image: url(../../images/close-card.svg);
+        background-position: center;
+    }
+}
+
+
+
+
+
+
+

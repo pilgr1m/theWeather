@@ -5,7 +5,7 @@ export default class OwmService {
     //main func fetch
     async getResources(url) {
         const response = await fetch(`${this._baseUrl}${url}`)
-        console.log(`${this._baseUrl}${url}`)
+        // console.log(`${this._baseUrl}${url}`)
         if (!response.ok) {
             throw new Error(`Could not fetch ${url}, received ${response.status}`)
         }

@@ -1,4 +1,6 @@
 .error {
-    color: rgb(240, 54, 54);
-    font-size: 1em;
+    position: relative;
+    top: 110px;
+    color: rgb(253, 8, 0);
+    font-size: 14px;
 }

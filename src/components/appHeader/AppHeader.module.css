@@ -1,9 +1,18 @@
 .appHeader {
     height: 104px;
     width: 100%;
+    display: flex;
 }
 .appHeader img{
-   position: relative;
-   top: 74px;
+   margin-top: auto;
+}
+
+@media (min-width: 320px) and (max-width: 576px) {
+    .appHeader{
+        height: 40px;
+    }
+    .appHeader img {
+        width: 140px;
+    }
 }
 
