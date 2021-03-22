@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/theWeather/static/css/main.348ca75c.chunk.css",
+    "main.css": "/theWeather/static/css/main.a47a82ac.chunk.css",
     "main.js": "/theWeather/static/js/main.6e1dd160.chunk.js",
     "main.js.map": "/theWeather/static/js/main.6e1dd160.chunk.js.map",
     "runtime-main.js": "/theWeather/static/js/runtime-main.027a2ce3.js",
@@ -8,7 +8,7 @@
     "static/js/2.4ace0299.chunk.js": "/theWeather/static/js/2.4ace0299.chunk.js",
     "static/js/2.4ace0299.chunk.js.map": "/theWeather/static/js/2.4ace0299.chunk.js.map",
     "index.html": "/theWeather/index.html",
-    "static/css/main.348ca75c.chunk.css.map": "/theWeather/static/css/main.348ca75c.chunk.css.map",
+    "static/css/main.a47a82ac.chunk.css.map": "/theWeather/static/css/main.a47a82ac.chunk.css.map",
     "static/js/2.4ace0299.chunk.js.LICENSE.txt": "/theWeather/static/js/2.4ace0299.chunk.js.LICENSE.txt",
     "static/media/ForecastContainer.module.css": "/theWeather/static/media/close-card.d5a6ebcc.svg",
     "static/media/search.595d4dfb.svg": "/theWeather/static/media/search.595d4dfb.svg",
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.027a2ce3.js",
     "static/js/2.4ace0299.chunk.js",
-    "static/css/main.348ca75c.chunk.css",
+    "static/css/main.a47a82ac.chunk.css",
     "static/js/main.6e1dd160.chunk.js"
   ]
 }
