@@ -66,7 +66,8 @@
     height: 45px;
     right: 10px;
     top: 70px;
-    background: linear-gradient(145.65deg, #BBBBBB 21.43%, #898585 66.97%);
+    /* background: linear-gradient(145.65deg, #BBBBBB 21.43%, #aca6a6 66.97%); */
+    background: transparent;
 	color:#000000;
     border: solid 2px #FFFFFF;
     border-radius: 100px;
@@ -76,7 +77,7 @@
 
 .divRadio{
 	display: absolute;
-	margin-top: 6px;
+	margin-top: 8px;
 }
 
 .divRadio input[type=radio] {
@@ -91,7 +92,7 @@
 	width: 29px;
 	height: 29px;
 	text-align: center;
-	margin-left: 9px;
+	margin-left: 10px;
 }
 
 .divRadio label span {
@@ -112,7 +113,7 @@
 
     .inputWrapper input{
         padding: 18px 24px 19px 20px;
-        width: 300px;
+        width: 210px;
         height: 40px;
         font-size: 16px;
     }
@@ -129,12 +130,10 @@
     }
     
     .weatherForm .buttonSubmit {
-        position: relative;
-        right: 220px;
-        top: 46px;
+        margin-left: -8px;
         padding: 2px 0 0 0;
-        width: 100px;
-        height: 38px;
+        width: 80px;
+        height: 40px;
         font-size: 13px;
         font-weight: 500;
     }

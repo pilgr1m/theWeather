@@ -74,8 +74,69 @@
     z-index: 0;
 }
 
-@media (max-width:1139px) {
-   
+@media (min-width: 768px) and (max-width: 1139px) {
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 1140px;
+        height: 192px;
+        text-align: left;
+    }
+    
+    .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 420px;
+        height: 192px;
+        z-index: 10;
+    }
+    
+    .left .date{
+        font-family: 'Poppins', sans-serif;
+        margin-left: -3px;
+        color: #000000;
+        font-size: 24px;
+    }
+    
+    .left .city{
+        margin-left: -4px;
+        margin-top: -6px;
+        font-size: 40px;
+        font-weight: 600;
+    }
+    
+    .left .feelsLike {
+        margin-left: -2px;
+        margin-top: -6px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+    }
+    
+    .left .wph {
+        margin-left: -2px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        width: 360px;
+    }
+    
+    .tempDegrees{
+        bottom: 24px;
+        left: -200px;
+        font-size: 160px;
+    }
+    
+    .icon {
+        width: 700px;
+        height: 700px;
+        left: 280px;
+        top: 0px;
+        z-index: 0;
+    }
+
 }
 
 @media (max-width:767px) {
@@ -101,9 +162,9 @@
 
 @media (min-width: 320px) and (max-width: 576px) {
     .wrapper {
-        width: 300px;
+        width: 100%;
         height: 160px;
-        margin-top: -24px;
+        margin-top: -50px;
     }
 
     .left .date{
@@ -135,13 +196,13 @@
     
     .left .descr {
         margin-left: -3px;
-        margin-bottom: 80px;
+        margin-bottom: 66px;
         font-size: 17px;
         font-weight: 500;
     }
     
     .tempDegrees{
-        top: 100px;
+        top: 120px;
         left: -206px;
         font-size: 60px;
         z-index: 3;
