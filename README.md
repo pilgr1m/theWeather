@@ -1,5 +1,6 @@
-.theWeather
-weather app
+#### .theWeather
+*weather app*
+____
 Technologies used: react, redux
 
 Demo - [ https://pilgr1m.github.io/theWeather/ ]
