@@ -14,18 +14,6 @@ const WithOwmService = () => {
         }
     }
 }
-
 export default WithOwmService
-// const withOwmService = (Component) => {
-//     const WrappedComponent = (props) => {
-//         return (
-//             <OwmServiceContex.Consumer>
-//                 {(OwmService) => {
-//                     return <Component {...props} OwmService={OwmService} />
-//                 }}
-//             </OwmServiceContex.Consumer>
-//         )
-//     }
-//     return WrappedComponent
-// }
+
 

@@ -1,14 +1,12 @@
 import React from 'react'
+import { convertTemp, convertWind, formatDate, getSrc } from "../helpers/Helpers"
 import Error from "../error/Error"
 import Spinner from "../spinner/Spinner"
-import { convertTemp, convertWind, formatDate, getSrc } from "../helpers/Helpers"
 
 import style from "./CurrentWeather.module.css"
 
 
 const CurrentWeather = ({ error, loading, dataWeather, unitName }) => {
-    // console.log(dataWeather)
-
     return (
         <>
             {error && <Error />}
@@ -39,7 +37,10 @@ const CurrentWeather = ({ error, loading, dataWeather, unitName }) => {
                     <div className={style.tempDegrees}> {convertTemp(unitName, dataWeather.main.temp)}
                     </div>
 
-                    <img className={style.icon} src={getSrc("icons", dataWeather.weather[0].icon)} alt="iconWeather" />
+                    <img
+                        className={style.icon}
+                        src={getSrc("icons", dataWeather.weather[0].icon)}
+                        alt="iconWeather" />
 
 
                 </div>

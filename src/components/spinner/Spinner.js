@@ -6,7 +6,6 @@ const Spinner = () => {
     return (
         <div className={style.spinnerWrapper}>
             <div className={style.blockspin}>
-                {/* <span className={style.loading}>Loading...</span> */}
                 <div className={style.spinner}></div>
             </div>
 

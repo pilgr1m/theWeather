@@ -4,9 +4,9 @@ import { convertTemp, convertWind, formatDate, getSrc } from "../helpers/Helpers
 import style from "./ForecastContainer.module.css"
 
 
-const CardDay = ({ id, unitName, dataForecast, isOpenCard, closeCard }) => {
+const CardDay = ({ id, unitName, dataForecast,
+    isOpenCard, closeCard }) => {
     let { daily } = dataForecast
-
 
     function createCardDay(id) {
         return (
@@ -40,9 +40,14 @@ const CardDay = ({ id, unitName, dataForecast, isOpenCard, closeCard }) => {
                     {createDivTempTime("EVENING", daily[id].temp.eve, daily[id].feels_like.eve)}
                 </div>
 
-                <img className={style.iconCard} src={getSrc("card-icons", daily[id].weather[0].icon)} alt="cardIcon" />
+                <img
+                    className={style.iconCard}
+                    src={getSrc("card-icons", daily[id].weather[0].icon)}
+                    alt="cardIcon" />
 
-                <button className={style.close} onClick={() => closeCard()}></button>
+                <button
+                    className={style.close}
+                    onClick={() => closeCard()} />
 
             </div>
         )

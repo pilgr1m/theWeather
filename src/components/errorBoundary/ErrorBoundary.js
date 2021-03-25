@@ -2,7 +2,6 @@ import React from 'react'
 import Error from "../error/Error"
 
 export default class ErrorBoundary extends React.Component {
-
     state = {
         error: false
     }
@@ -17,7 +16,6 @@ export default class ErrorBoundary extends React.Component {
         if (this.state.error) {
             return <Error />
         }
-
         return this.props.children
     }
 }

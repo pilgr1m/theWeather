@@ -10,16 +10,24 @@ const ListDay = ({ clickDay, unitName, dataForecast }) => {
 	function dayList() {
 		return days.map((day, index) => {
 			return (
-				<div onClick={() => clickDay(index)} key={day.dt} className={style.dayWrapper}>
+				<div
+					onClick={() => clickDay(index)}
+					key={day.dt}
+					className={style.dayWrapper}>
+
 					<div className={style.day}>
 						<span className={style.dayDate}> {formatDate(day.dt, dataForecast)}  </span>
 						<div>
-							<img className={style.iconMini} src={getSrc("mini-icons", day.weather[0].icon)} alt="iconMini" />
+							<img
+								className={style.iconMini}
+								src={getSrc("mini-icons", day.weather[0].icon)}
+								alt="iconMini" />
 						</div>
 						<span>
 							{convertTemp(unitName, day.temp.day)}
 						</span>
 					</div>
+
 				</div>
 			)
 		})

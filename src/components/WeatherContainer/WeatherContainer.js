@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import CurrentWeather from "../CurrentWeather/CurrentWeather"
-import ForecastContainer from "../Forecast/ForecastContainer"
 import { connect } from "react-redux"
 import WithOwmService from "../hoc/WithOwmService"
 import {
@@ -8,8 +6,12 @@ import {
     setCity, dataReceivedForecast
 } from "../../redux/weather/actions"
 
+import CurrentWeather from "../CurrentWeather/CurrentWeather"
+import ForecastContainer from "../Forecast/ForecastContainer"
+
 import style from "./WeatherContainer.module.css"
 import search from "../../images/search.svg"
+
 
 const WeatherContainer = (props) => {
     let { OwmService, dataReceivedWeather, dataError,
@@ -31,13 +33,13 @@ const WeatherContainer = (props) => {
         setCity("")
     }
 
-    async function fetchWeather() {
-        //кодер для правильных запросов (изменяет "неправильные" символы)
+    function fetchWeather() {
+        //changer for "wrong" symbols
         const uriEncodedCity = encodeURIComponent(city)
-        //для безопасности своего АПИключа, когда выложишь на гитхаб
+        //for save your APIkey
         const API_KEY = process.env.REACT_APP_API_KEY
 
-        await OwmService.getCurrentWeather(unit, uriEncodedCity, API_KEY)
+        OwmService.getCurrentWeather(unit, uriEncodedCity, API_KEY)
             .then((response) => {
                 if (response.cod !== 200) {
                     throw new Error()
@@ -53,7 +55,6 @@ const WeatherContainer = (props) => {
                 dataError(true)
             })
     }
-
 
     function fetchForecast(unit, lat, lon) {
         const API_KEY = process.env.REACT_APP_API_KEY
@@ -83,7 +84,8 @@ const WeatherContainer = (props) => {
     function createInput(name, title) {
         return (
             <div className={style.divRadio}>
-                <input className={style.radio}
+                <input
+                    className={style.radio}
                     type="radio"
                     name="units"
                     checked={unitName === name}
@@ -116,13 +118,18 @@ const WeatherContainer = (props) => {
                 </div>
             </form>
 
-            <CurrentWeather dataWeather={dataWeather} unitName={unitName} loading={loading} error={error} />
-            <ForecastContainer dataForecast={dataForecast} unitName={unitName} />
+            <CurrentWeather
+                dataWeather={dataWeather}
+                unitName={unitName}
+                loading={loading}
+                error={error} />
+            <ForecastContainer
+                dataForecast={dataForecast}
+                unitName={unitName} />
 
         </>
     )
 }
-
 
 const mapStateToProps = (state) => {
     return {

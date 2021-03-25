@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import Error from "../error/Error"
-import Spinner from "../spinner/Spinner"
 import CardDay from "./CardDay"
 import ListDay from "./ListDay"
 
@@ -24,9 +22,18 @@ const ForecastContainer = ({ dataForecast, unitName }) => {
 	return (
 		<div className={style.wrapperForecast}>
 
-			<ListDay id={id} dataForecast={dataForecast} unitName={unitName} clickDay={clickDay} />
+			<ListDay
+				id={id}
+				dataForecast={dataForecast}
+				unitName={unitName}
+				clickDay={clickDay} />
 
-			<CardDay id={id} dataForecast={dataForecast} unitName={unitName} isOpenCard={isOpenCard} closeCard={closeCard} />
+			<CardDay
+				id={id}
+				dataForecast={dataForecast}
+				unitName={unitName}
+				isOpenCard={isOpenCard}
+				closeCard={closeCard} />
 
 		</div>
 	)

@@ -1,6 +1,6 @@
 import React from 'react'
-import AppHeader from './components/appHeader/AppHeader'
-import AppFooter from './components/appFooter/AppFooter'
+import AppHeader from "./components/appHeader/AppHeader"
+import AppFooter from "./components/appFooter/AppFooter"
 import WeatherContainer from "./components/WeatherContainer/WeatherContainer"
 
 import "./App.css"
